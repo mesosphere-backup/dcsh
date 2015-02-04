@@ -11,7 +11,7 @@ def main():
     script = open(sys.argv[1], 'rb').read()
 
     resp = requests.post(
-        url="http://localhost:7070/run",
+        url="http://localhost:5000/run",
         data=script,
         headers={'Content-Type': 'application/octet-stream'})
 
@@ -21,7 +21,7 @@ def main():
     while not running:
         time.sleep(1)
         resp = requests.get(
-            url="http://localhost:7070/job/{0}".format(_id))
+            url="http://localhost:5000/job/{0}".format(_id))
         info = resp.json()
         running = info["running"]
 
